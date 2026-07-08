@@ -1,4 +1,6 @@
 # ppscout_ws
+<img width="1049" height="679" alt="image" src="https://github.com/user-attachments/assets/665edc3e-4014-4cee-a745-1cfaef9f055b" />
+
 
 ROS 2 workspace for simulating an AgileX Scout Mini mobile base with a Piper manipulator arm in Gazebo. The integration package `ppscout_ros2` combines the Scout description, Piper arm URDF, Gazebo plugins, and ros2_control arm controllers into a single robot.
 
