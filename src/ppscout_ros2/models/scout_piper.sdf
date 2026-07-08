@@ -1,0 +1,675 @@
+<sdf version='1.11'>
+  <model name='scout_piper'>
+    <link name='base_link'>
+      <inertial>
+        <pose>-9.1119197939521876e-05 4.9408848985407669e-07 -0.01220519523959381 0 0 0</pose>
+        <mass>53.020000000000003</mass>
+        <inertia>
+          <ixx>6.2682172396431648</ixx>
+          <ixy>-6.083092632739384e-07</ixy>
+          <ixz>0.00081000406826696502</ixz>
+          <iyy>6.4838645277041893</iyy>
+          <iyz>0.001845725234115082</iyz>
+          <izz>8.0646696260540871</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0.0080000000000000002 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.92500000000000004 0.38 0.20999999999999999</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='base_link_collision_1'>
+        <pose>0 0 0.035000000000000003 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1541666666666667 0.627 0.069999999999999993</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__front_left_wheel_link_collision_2'>
+        <pose>0.249 0.29153000000000001 -0.070199999999999999 1.5707949999999999 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.11652999999999999</length>
+            <radius>0.16458999999999999</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__front_right_wheel_link_collision_3'>
+        <pose>0.249 -0.29153000000000001 -0.070199999999999999 -1.5723903071795862 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.11652999999999999</length>
+            <radius>0.16458999999999999</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__rear_left_wheel_link_collision_4'>
+        <pose>-0.249 0.29153000000000001 -0.070199999999999999 1.5707949999999999 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.11652999999999999</length>
+            <radius>0.16458999999999999</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__rear_right_wheel_link_collision_5'>
+        <pose>-0.249 -0.29153000000000001 -0.070199999999999999 -1.5723903071795862 0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.11652999999999999</length>
+            <radius>0.16458999999999999</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__piper_base_link_collision_6'>
+        <pose>0 0 0.14999999999999999 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/base_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://scout_description/meshes/scout_v2/base_link.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__front_left_wheel_link_visual_1'>
+        <pose>0.249 0.29153000000000001 -0.070199999999999999 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://scout_description/meshes/scout_v2/wheel_type2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__front_right_wheel_link_visual_2'>
+        <pose>0.249 -0.29153000000000001 -0.070199999999999999 3.1400000000000001 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://scout_description/meshes/scout_v2/wheel_type1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__rear_left_wheel_link_visual_3'>
+        <pose>-0.249 0.29153000000000001 -0.070199999999999999 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://scout_description/meshes/scout_v2/wheel_type1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__rear_right_wheel_link_visual_4'>
+        <pose>-0.249 -0.29153000000000001 -0.070199999999999999 3.1400000000000001 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://scout_description/meshes/scout_v2/wheel_type2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__piper_base_link_visual_5'>
+        <pose>0 0 0.14999999999999999 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/base_link.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint1' type='revolute'>
+      <pose relative_to='base_link'>0 0 0.27300000000000002 0 0 0</pose>
+      <parent>base_link</parent>
+      <child>link1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-2.6179937999999998</lower>
+          <upper>2.6179937999999998</upper>
+          <effort>100</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link1'>
+      <pose relative_to='joint1'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.00032000000000000003 -0.00040999999999999999 -0.00348 0 0 0</pose>
+        <mass>0.70999999999999996</mass>
+        <inertia>
+          <ixx>0.00050027000000000003</ixx>
+          <ixy>7.8000000000000005e-07</ixy>
+          <ixz>6.2600000000000002e-06</ixz>
+          <iyy>0.00040879000000000002</iyy>
+          <iyz>4.6199999999999998e-06</iyz>
+          <izz>0.00045802000000000001</izz>
+        </inertia>
+      </inertial>
+      <collision name='link1_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/link1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/link1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint2' type='revolute'>
+      <pose relative_to='link1'>0 0 0 1.5707963000000003 -0.13578660000000004 -3.1415926000000001</pose>
+      <parent>link1</parent>
+      <child>link2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>3.1415926000000001</upper>
+          <effort>100</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link2'>
+      <pose relative_to='joint2'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.21851999999999999 -0.0086099999999999996 0.0012600000000000001 0 0 0</pose>
+        <mass>1.1599999999999999</mass>
+        <inertia>
+          <ixx>0.00111915</ixx>
+          <ixy>0.00182916</ixy>
+          <ixz>0.00019233</ixz>
+          <iyy>0.067632510000000007</iyy>
+          <iyz>7.6699999999999994e-06</iyz>
+          <izz>0.067558999999999994</izz>
+        </inertia>
+      </inertial>
+      <collision name='link2_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/link2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/link2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint3' type='revolute'>
+      <pose relative_to='link2'>0.28503000000000001 0 0 0 0 -1.7938494</pose>
+      <parent>link2</parent>
+      <child>link3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-2.9670597000000001</lower>
+          <upper>0</upper>
+          <effort>100</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link3'>
+      <pose relative_to='joint3'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.019990000000000001 -0.14807999999999999 -0.00052999999999999998 0 0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.01347608</ixx>
+          <ixy>0.00161034</ixy>
+          <ixz>6.6000000000000003e-07</ixz>
+          <iyy>0.00046377000000000001</iyy>
+          <iyz>1.6199999999999999e-06</iyz>
+          <izz>0.01363321</izz>
+        </inertia>
+      </inertial>
+      <collision name='link3_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/link3.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link3_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/link3.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint4' type='revolute'>
+      <pose relative_to='link3'>-0.02198 -0.25074999999999997 0 1.5707963000000003 0 0</pose>
+      <parent>link3</parent>
+      <child>link4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.7453292</lower>
+          <upper>1.7453292</upper>
+          <effort>100</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link4'>
+      <pose relative_to='joint4'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.00012999999999999999 -0.00076000000000000004 -0.0039399999999999999 0 0 0</pose>
+        <mass>0.38</mass>
+        <inertia>
+          <ixx>0.00017844000000000001</ixx>
+          <ixy>6.1999999999999999e-07</ixy>
+          <ixz>6.7000000000000004e-07</ixz>
+          <iyy>0.00018913999999999999</iyy>
+          <iyz>4.0799999999999999e-06</iyz>
+          <izz>0.00014613000000000001</izz>
+        </inertia>
+      </inertial>
+      <collision name='link4_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/link4.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link4_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/link4.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint5' type='revolute'>
+      <pose relative_to='link4'>0 0 0 -1.5707963000000003 0 0</pose>
+      <parent>link4</parent>
+      <child>link5</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1.2217304</lower>
+          <upper>1.2217304</upper>
+          <effort>100</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link5'>
+      <pose relative_to='joint5'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.00018000000000000001 -0.061039999999999997 -0.0022699999999999999 0 0 0</pose>
+        <mass>0.38300000000000001</mass>
+        <inertia>
+          <ixx>0.0017231799999999999</ixx>
+          <ixy>2.5900000000000002e-06</ixy>
+          <ixz>9.9999999999999995e-08</ixz>
+          <iyy>0.00017935999999999999</iyy>
+          <iyz>9.9000000000000001e-06</iyz>
+          <izz>0.0017117199999999999</izz>
+        </inertia>
+      </inertial>
+      <collision name='link5_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/link5.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link5_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/link5.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='joint6' type='revolute'>
+      <pose relative_to='link5'>8.8258999999999996e-05 -0.090999999999999998 0 1.5707963000000003 0 0</pose>
+      <parent>link5</parent>
+      <child>link6</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-2.0943950999999998</lower>
+          <upper>2.0943950999999998</upper>
+          <effort>100</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='link6'>
+      <pose relative_to='joint6'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-7.4156102627798674e-05 0.00013670746881490139 0.033536364357946519 0 0 0</pose>
+        <mass>0.497</mass>
+        <inertia>
+          <ixx>0.0025066338923622061</ixx>
+          <ixy>2.3255882437980851e-06</ixy>
+          <ixz>-3.1965411814820138e-06</ixz>
+          <iyy>0.002157523897668484</iyy>
+          <iyz>8.7178496836166312e-07</iyz>
+          <izz>0.00072567654609928924</izz>
+        </inertia>
+      </inertial>
+      <collision name='link6_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/link6.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='link6_fixed_joint_lump__flange_link_collision_1'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/flange.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='link6_fixed_joint_lump__gripper_base_collision_2'>
+        <pose>0 0 0.0044999999999999997 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/gripper_base.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='link6_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/link6.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='link6_fixed_joint_lump__flange_link_visual_1'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/flange.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='link6_fixed_joint_lump__gripper_base_visual_2'>
+        <pose>0 0 0.0044999999999999997 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/gripper_base.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='gripper' type='prismatic'>
+      <pose relative_to='link6'>0 0 0.0044999999999999997 0 0 0</pose>
+      <parent>link6</parent>
+      <child>gripper_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0.10000000000000001</upper>
+          <effort>10</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='gripper_link'>
+      <pose relative_to='gripper'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>9.9999999999999995e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>9.9999999999999995e-07</iyy>
+          <iyz>0</iyz>
+          <izz>9.9999999999999995e-07</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <joint name='gripper_joint1' type='prismatic'>
+      <pose relative_to='link6'>0 0 0.14249999999999999 1.5707963000000003 0 0</pose>
+      <parent>link6</parent>
+      <child>gripper_link1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <mimic joint='gripper'>
+          <multiplier>0.5</multiplier>
+          <offset>0</offset>
+          <reference>0</reference>
+        </mimic>
+        <limit>
+          <lower>0</lower>
+          <upper>0.050000000000000003</upper>
+          <effort>10</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='gripper_link1'>
+      <pose relative_to='gripper_joint1'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.00065123185041968004 -0.049192986913198899 0.0097225876918402496 0 0 0</pose>
+        <mass>0.025000000000000001</mass>
+        <inertia>
+          <ixx>7.3709999999999997e-05</ixx>
+          <ixy>-1.13e-06</ixy>
+          <ixz>2.1e-07</ixz>
+          <iyy>7.8099999999999998e-06</iyy>
+          <iyz>-1.3720000000000001e-05</iyz>
+          <izz>7.47e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='gripper_link1_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/gripper_link1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='gripper_link1_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/gripper_link1.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='gripper_joint2' type='prismatic'>
+      <pose relative_to='link6'>0 0 0.14249999999999999 1.5707963000000003 3.3087224502121107e-24 -3.1415926000000001</pose>
+      <parent>link6</parent>
+      <child>gripper_link2</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <mimic joint='gripper'>
+          <multiplier>-0.5</multiplier>
+          <offset>0</offset>
+          <reference>0</reference>
+        </mimic>
+        <limit>
+          <lower>-0.050000000000000003</lower>
+          <upper>0</upper>
+          <effort>10</effort>
+          <velocity>3</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='gripper_link2'>
+      <pose relative_to='gripper_joint2'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0.00065123185041968004 -0.049192986913198899 0.0097225876918402496 0 0 0</pose>
+        <mass>0.025000000000000001</mass>
+        <inertia>
+          <ixx>7.3709999999999997e-05</ixx>
+          <ixy>-1.13e-06</ixy>
+          <ixz>2.1e-07</ixz>
+          <iyy>7.8099999999999998e-06</iyy>
+          <iyz>-1.3720000000000001e-05</iyz>
+          <izz>7.47e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='gripper_link2_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/gripper_link2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='gripper_link2_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://agx_arm_description/agx_arm_urdf/piper/meshes/dae/gripper_link2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <plugin name='gz::sim::systems::JointStatePublisher' filename='gz-sim-joint-state-publisher-system'/>
+    <frame name='base_footprint_joint' attached_to='base_link'>
+      <pose>0 0 -0.23479 0 0 0</pose>
+    </frame>
+    <frame name='base_footprint' attached_to='base_footprint_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='front_left_wheel' attached_to='base_link'>
+      <pose>0.249 0.29153000000000001 -0.070199999999999999 0 0 0</pose>
+    </frame>
+    <frame name='front_left_wheel_link' attached_to='front_left_wheel'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='front_right_wheel' attached_to='base_link'>
+      <pose>0.249 -0.29153000000000001 -0.070199999999999999 3.1400000000000001 0 0</pose>
+    </frame>
+    <frame name='front_right_wheel_link' attached_to='front_right_wheel'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='inertial_joint' attached_to='base_link'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='inertial_link' attached_to='inertial_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='rear_left_wheel' attached_to='base_link'>
+      <pose>-0.249 0.29153000000000001 -0.070199999999999999 0 0 0</pose>
+    </frame>
+    <frame name='rear_left_wheel_link' attached_to='rear_left_wheel'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='rear_right_wheel' attached_to='base_link'>
+      <pose>-0.249 -0.29153000000000001 -0.070199999999999999 3.1400000000000001 0 0</pose>
+    </frame>
+    <frame name='rear_right_wheel_link' attached_to='rear_right_wheel'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='scout_to_piper_joint' attached_to='base_link'>
+      <pose>0 0 0.14999999999999999 0 0 0</pose>
+    </frame>
+    <frame name='piper_base_link' attached_to='scout_to_piper_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='gripper_base_joint' attached_to='flange_link'>
+      <pose>0 0 0.0044999999999999997 0 0 0</pose>
+    </frame>
+    <frame name='gripper_base' attached_to='gripper_base_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='flange_joint' attached_to='link6'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='flange_link' attached_to='flange_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+  </model>
+</sdf>

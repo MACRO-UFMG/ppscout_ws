@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<robot name="scout_piper" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find scout_description)/urdf/model.xacro" />
+
+    <xacro:include filename="$(find ppscout_ros2)/urdf/piper_with_gripper_scout.xacro" />
+    <xacro:include filename="$(find ppscout_ros2)/urdf/piper_ros2_control.xacro" />
+
+    <joint name="scout_to_piper_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="piper_base_link" />
+        <origin xyz="0.0 0.0 0.19" rpy="0 0 0" />
+    </joint>
+
+    <gazebo>
+        <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+            <left_joint>front_left_wheel</left_joint>
+            <right_joint>front_right_wheel</right_joint>
+            <left_joint>rear_left_wheel</left_joint>
+            <right_joint>rear_right_wheel</right_joint>
+            <wheel_separation>0.451</wheel_separation>
+            <wheel_radius>0.08</wheel_radius>
+            <topic>cmd_vel</topic>
+            <odom_topic>odom</odom_topic>
+            <frame_id>odom</frame_id>
+            <child_frame_id>base_footprint</child_frame_id>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+            <topic>joint_states</topic>
+            <joint_name>front_left_wheel</joint_name>
+            <joint_name>front_right_wheel</joint_name>
+            <joint_name>rear_left_wheel</joint_name>
+            <joint_name>rear_right_wheel</joint_name>
+            <joint_name>pan_joint</joint_name>
+            <joint_name>tilt_joint</joint_name>
+            <joint_name>joint1</joint_name>
+            <joint_name>joint2</joint_name>
+            <joint_name>joint3</joint_name>
+            <joint_name>joint4</joint_name>
+            <joint_name>joint5</joint_name>
+            <joint_name>joint6</joint_name>
+            <joint_name>gripper</joint_name>
+            <joint_name>gripper_joint1</joint_name>
+            <joint_name>gripper_joint2</joint_name>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+            <odom_frame>odom</odom_frame>
+            <base_frame>base_link</base_frame>
+            <topic>odom</topic>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+            <joint_name>pan_joint</joint_name>
+            <topic>pan_camera_cmd</topic>
+            <p_gain>1</p_gain>
+            <i_gain>0.1</i_gain>
+            <d_gain>0.1</d_gain>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin filename="gz-sim-joint-position-controller-system" name="gz::sim::systems::JointPositionController">
+            <joint_name>tilt_joint</joint_name>
+            <topic>tilt_camera_cmd</topic>
+            <p_gain>4</p_gain>
+            <i_gain>0.1</i_gain>
+            <d_gain>0.1</d_gain>
+        </plugin>
+    </gazebo>
+
+    <gazebo reference="imu_link">
+        <sensor name="imu_sensor" type="imu">
+            <always_on>true</always_on>
+            <update_rate>100</update_rate>
+            <visualize>true</visualize>
+            <topic>imu</topic>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="lidar_link">
+        <sensor name="lidar" type="gpu_lidar">
+            <always_on>true</always_on>
+            <visualize>true</visualize>
+            <update_rate>5</update_rate>
+            <topic>scan</topic>
+            <lidar>
+                <scan>
+                    <horizontal>
+                        <samples>90</samples>
+                        <resolution>1</resolution>
+                        <min_angle>0</min_angle>
+                        <max_angle>6.28</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.12</min>
+                    <max>3.5</max>
+                    <resolution>0.015</resolution>
+                </range>
+            </lidar>
+        </sensor>
+    </gazebo>
+
+</robot>
