@@ -76,6 +76,15 @@ $(bold "Arm & gripper")
   arm j1..j6          ...or 6 joint positions in radians, e.g. scout arm -- 0 1 -1 0 0.5 0
   grip open|close|<m> Open/close the gripper or set a position in meters.
 
+$(bold "Pull requests")  (wraps the GitHub CLI; 'main' is protected, so all work lands via PR)
+  pr new [title]      Push the current branch and open a PR against main.
+  pr branch <name>    Start a fresh branch off an up-to-date main.
+  pr list             List open PRs.
+  pr view [n]         Show a PR (defaults to the one for the current branch).
+  pr checkout <n>     Check out someone else's PR locally.
+  pr merge [n]        Squash-merge a PR and delete its branch.
+  pr status           PRs waiting on you, and yours waiting on review.
+
 $(bold "Diagnostics")
   status              Workspace/sim health check (build, gazebo, controllers, topics).
   topics              List active ROS topics.
@@ -201,6 +210,73 @@ cmd_status() {
     fi
 }
 
+# ---------------------------------------------------------- pull requests ---
+
+MAIN_BRANCH="main"
+
+require_gh() {
+    command -v gh >/dev/null 2>&1 || \
+        die "GitHub CLI not found — install it: sudo apt install gh   (see https://cli.github.com)"
+    gh auth status >/dev/null 2>&1 || \
+        die "GitHub CLI not logged in — run: gh auth login"
+}
+
+current_branch() { git -C "$WS_DIR" rev-parse --abbrev-ref HEAD; }
+
+cmd_pr() {
+    require_gh
+    cd "$WS_DIR"
+    local sub="${1:-status}"
+    [ $# -gt 0 ] && shift
+    case "$sub" in
+        new|create)   pr_new "$@" ;;
+        branch|start) pr_branch "$@" ;;
+        list|ls)      exec gh pr list "$@" ;;
+        view|show)    exec gh pr view "$@" ;;
+        checkout|co)  [ $# -ge 1 ] || die "Usage: scout pr checkout <number>"
+                      exec gh pr checkout "$@" ;;
+        merge)        pr_merge "$@" ;;
+        status)       exec gh pr status ;;
+        *)            die "Unknown pr command '$sub' — see 'scout help'." ;;
+    esac
+}
+
+pr_branch() {
+    [ $# -ge 1 ] || die "Usage: scout pr branch <name>"
+    local name="$1"
+    git diff --quiet && git diff --cached --quiet || \
+        die "You have uncommitted changes — commit or stash them first."
+    info "Updating $MAIN_BRANCH..."
+    git fetch origin "$MAIN_BRANCH"
+    git switch -c "$name" "origin/$MAIN_BRANCH"
+    info "On '$name', branched off origin/$MAIN_BRANCH. Commit, then: scout pr new"
+}
+
+pr_new() {
+    local branch; branch="$(current_branch)"
+    [ "$branch" != "$MAIN_BRANCH" ] || \
+        die "$MAIN_BRANCH is protected — start a branch first:  scout pr branch <name>"
+    git diff --quiet && git diff --cached --quiet || \
+        warn "You have uncommitted changes — they will NOT be part of this PR."
+
+    info "Pushing '$branch' to origin..."
+    git push -u origin "$branch"
+
+    if [ $# -gt 0 ]; then
+        gh pr create --base "$MAIN_BRANCH" --head "$branch" --title "$*" --body ""
+    else
+        # --fill takes the title/body straight from the commits on this branch.
+        gh pr create --base "$MAIN_BRANCH" --head "$branch" --fill
+    fi
+    info "main requires 1 approving review — ask a teammate to review before merging."
+}
+
+pr_merge() {
+    info "Squash-merging (branch is deleted afterwards)..."
+    gh pr merge "$@" --squash --delete-branch
+    git switch "$MAIN_BRANCH" && git pull --ff-only origin "$MAIN_BRANCH"
+}
+
 # --------------------------------------------------------------- dispatch ---
 
 # Invoked as 'arm' (via scout link): behave as 'scout arm ...'
@@ -227,6 +303,7 @@ case "$cmd" in
     stop)           cmd_stop ;;
     arm)            cmd_arm "$@" ;;
     grip|gripper)   cmd_grip "$@" ;;
+    pr)             cmd_pr "$@" ;;
     status)         cmd_status ;;
     topics)         cmd_topics "$@" ;;
     shell)          cmd_shell ;;
