@@ -62,6 +62,34 @@ Run `scout help` for the always-up-to-date list.
 | `scout arm -- j1 j2 j3 j4 j5 j6` | Moves to explicit joint positions in radians. `--time <s>` sets the trajectory duration. |
 | `scout grip open\|close\|<m>` | Opens/closes the gripper or sets a position in meters (0.0 = open, 0.1 = closed). `gripper` also works. |
 
+### Pull requests
+
+`main` is a protected branch: it takes one approving review to merge, force-pushes and
+deletions are blocked, and review threads must be resolved. These commands wrap the
+[GitHub CLI](https://cli.github.com) (`gh auth login` once per machine) so the whole
+branch → PR → merge loop stays in `scout`.
+
+| Command | What it does |
+|---------|--------------|
+| `scout pr branch <name>` | Fetches `main` and starts `<name>` off `origin/main`. Refuses to run with uncommitted changes. |
+| `scout pr new [title]` | Pushes the current branch (setting upstream) and opens a PR against `main`. Without a title, the PR is filled in from the branch's commits. Refuses to run on `main`. |
+| `scout pr list` | Open PRs on the repo. |
+| `scout pr view [n]` | Shows a PR — defaults to the one for the current branch. |
+| `scout pr checkout <n>` | Checks out PR `<n>` locally for review or testing. |
+| `scout pr merge [n]` | Squash-merges, deletes the branch, then returns you to an updated `main`. |
+| `scout pr status` | What's waiting on your review, and what of yours is waiting on someone else's. |
+
+```bash
+scout pr branch fix/arm-limits
+# ...edit, commit...
+scout pr new "Clamp joint 3 to its mechanical limit"
+scout pr merge          # after the review lands
+```
+
+Note that GitHub does not let you approve your own pull request, so a PR you opened
+needs a review from another collaborator. Repo admins can still merge without one —
+admin enforcement is deliberately left off so nobody gets locked out of a hotfix.
+
 ### Diagnostics
 
 | Command | What it does |

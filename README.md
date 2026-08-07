@@ -38,6 +38,9 @@ arm home          # 'arm' is a shortcut for 'scout arm'
 arm ready
 scout grip close
 scout status      # health check: build, gazebo, controllers, topics
+
+scout pr branch fix/arm-limits   # branch off an up-to-date main
+scout pr new                     # push + open a PR (main is protected)
 scout help        # full command list
 ```
 
