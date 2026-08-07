@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+    <!-- Path to the ros2_control controller configuration. Overridable from a
+         launch file: xacro ... controllers_file:=/path/to/controllers.yaml -->
+    <xacro:arg name="controllers_file"
+               default="$(find ppscout_bringup)/config/arm_controllers.yaml"/>
+
     <xacro:macro name="piper_arm_joint" params="joint_name">
         <joint name="${joint_name}">
             <command_interface name="position"/>
@@ -34,7 +39,7 @@
     <gazebo>
         <plugin filename="gz_ros2_control-system"
                 name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-            <parameters>$(find ppscout_ros2)/params/arm_controllers.yaml</parameters>
+            <parameters>$(arg controllers_file)</parameters>
             <controller_manager_prefix_node_name>controller_manager</controller_manager_prefix_node_name>
         </plugin>
     </gazebo>

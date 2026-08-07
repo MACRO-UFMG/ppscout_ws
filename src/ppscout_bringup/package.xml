@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>ppscout_ros2</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <name>ppscout_bringup</name>
+  <version>0.1.0</version>
+  <description>Launch files and configuration to bring up the Scout Mini + Piper robot (simulation and, later, real hardware)</description>
   <maintainer email="thalesasoares02@hotmail.com">thales</maintainer>
-  <license>TODO: License declaration</license>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <exec_depend>agx_arm_description</exec_depend>
-  <exec_depend>scout_description</exec_depend>
+  <exec_depend>ppscout_description</exec_depend>
   <exec_depend>xacro</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
   <exec_depend>rviz2</exec_depend>
   <exec_depend>ros_gz_sim</exec_depend>
   <exec_depend>ros_gz_bridge</exec_depend>

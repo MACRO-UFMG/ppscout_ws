@@ -3,8 +3,8 @@
 
     <xacro:include filename="$(find scout_description)/urdf/model.xacro" />
 
-    <xacro:include filename="$(find ppscout_ros2)/urdf/piper_with_gripper_scout.xacro" />
-    <xacro:include filename="$(find ppscout_ros2)/urdf/piper_ros2_control.xacro" />
+    <xacro:include filename="$(find ppscout_description)/urdf/piper_with_gripper_scout.xacro" />
+    <xacro:include filename="$(find ppscout_description)/urdf/piper_ros2_control.xacro" />
 
     <joint name="scout_to_piper_joint" type="fixed">
         <parent link="base_link" />
