@@ -18,6 +18,33 @@ src/
 
 Full documentation lives in [docs/](docs/README.md).
 
+## The `scout` command
+
+Everything below is wrapped by a single helper script at the repo root — it
+sources ROS and the workspace overlay for you, so you never need to
+`source install/setup.bash` by hand:
+
+```bash
+git clone https://github.com/MACRO-UFMG/ppscout_ws.git
+cd ppscout_ws
+./scout deps      # install apt + rosdep dependencies (once)
+./scout build     # rosdep + colcon build --symlink-install
+./scout link      # symlink 'scout' and 'arm' into ~/.local/bin (once)
+
+scout sim         # launch Gazebo + RViz + controllers
+scout demo        # arm poses + gripper + 1 m square drive
+scout drive --linear 0.3 --duration 2
+arm home          # 'arm' is a shortcut for 'scout arm'
+arm ready
+scout grip close
+scout status      # health check: build, gazebo, controllers, topics
+scout help        # full command list
+```
+
+See [docs/scout-cli.md](docs/scout-cli.md) for the full command reference.
+
+The sections below show the equivalent raw ROS 2 commands.
+
 ## Quick start
 
 ### 1. Install dependencies (once)
@@ -100,6 +127,7 @@ arm.home()
 
 | Page | Contents |
 |------|----------|
+| [docs/scout-cli.md](docs/scout-cli.md) | The `scout` helper command — build, sim, demo, base, and arm from one CLI |
 | [docs/architecture.md](docs/architecture.md) | Workspace layout and how the pieces fit together |
 | [docs/simulation.md](docs/simulation.md) | Launch arguments, controllers, worlds |
 | [docs/base-control.md](docs/base-control.md) | Base topics, CLI, Python API |
