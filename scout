@@ -262,10 +262,11 @@ pr_new() {
     info "Pushing '$branch' to origin..."
     git push -u origin "$branch"
 
+    # --fill takes title and body from the commits on this branch; an explicit
+    # --title overrides just the title and leaves the generated body alone.
     if [ $# -gt 0 ]; then
-        gh pr create --base "$MAIN_BRANCH" --head "$branch" --title "$*" --body ""
+        gh pr create --base "$MAIN_BRANCH" --head "$branch" --fill --title "$*"
     else
-        # --fill takes the title/body straight from the commits on this branch.
         gh pr create --base "$MAIN_BRANCH" --head "$branch" --fill
     fi
     info "main requires 1 approving review — ask a teammate to review before merging."
